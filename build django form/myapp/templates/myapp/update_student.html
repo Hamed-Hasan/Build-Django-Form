@@ -1,0 +1,13 @@
+<!-- myapp/templates/myapp/update_student.html -->
+{% extends 'base.html' %}
+
+{% block title %}Update Student{% endblock %}
+
+{% block content %}
+    <h2>Update Student</h2>
+    <form method="post" action="{% url 'update_student' student.roll %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+{% endblock %}

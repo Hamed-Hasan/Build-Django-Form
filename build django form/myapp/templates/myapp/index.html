@@ -1,0 +1,64 @@
+<!-- myapp/templates/myapp/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}My App - Home{% endblock %}
+
+{% block content %}
+    <h1 class="bg-danger">Welcome to My App</h1>
+    <a
+        name=""
+        id=""
+        href="#"
+        class="btn btn-primary"
+        role="button"
+        >Button</a
+    >
+
+    <h2>Student Data</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Father's Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.roll }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.father_name }}</td>
+                    <td>
+                        <a
+                            class="btn btn-danger"
+                            role="button"
+                            href="{% url 'delete_student' student.roll %}"
+                        >
+                            Delete
+                        </a>
+                        <a
+                            class="btn btn-warning"
+                            role="button"
+                            href="{% url 'update_student' student.roll %}"
+                        >
+                            Update
+                        </a>
+                        <a
+                        class="btn btn-warning"
+                        role="button"
+                        href="{% url 'add_student' %}"
+                    >
+                        Add Student
+                    </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Your content goes here -->
+{% endblock %}
